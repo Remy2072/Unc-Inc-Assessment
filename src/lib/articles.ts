@@ -3,11 +3,12 @@ import type { Article } from "../types/article";
 export const articles: Article[] = [
     {
         id: "1",
-        title: "Nieuwe website gelanceerd",
+        title: "De Johan Cruijff Arena krijgt een renovatie",
         description:
             "Ons team heeft een compleet vernieuwde website gelanceerd.",
-        content: "Vandaag is onze nieuwe website officieel live gegaan.",
-        image: "https://picsum.photos/600/400?random=1",
+        content:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id odio imperdiet, imperdiet eros quis, mattis purus. Phasellus facilisis auctor rhoncus. Integer ut suscipit dui, non consectetur leo. Etiam sem justo, tempus sit amet sollicitudin non, gravida id libero. Sed semper egestas gravida. In at mollis nisi. Nulla non urna nunc. Aliquam id orci sollicitudin, blandit ante a, venenatis risus. Integer efficitur tristique sapien, vel consectetur dolor blandit ac. Fusce ut tellus quis est hendrerit bibendum eget rutrum nulla. Donec sed consectetur nibh. Suspendisse maximus aliquet lorem.",
+        image: "https://www.ajax.nl/media/weiagkpd/2023-12-17-visit-ajax-0003.jpg",
         date: "2026-03-06",
     },
     {

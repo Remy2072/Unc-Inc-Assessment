@@ -1,0 +1,83 @@
+.login-page {
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    padding: 1rem;
+}
+
+.login-card {
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--main-radius);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.25rem;
+    width: 100%;
+    max-width: 31.25rem;
+    height: auto;
+}
+
+.login-card img {
+    width: 12.5rem;
+    padding-top: 1.875rem;
+    padding-bottom: 2.5rem;
+}
+
+.login-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.563rem;
+    width: 100%;
+    padding-bottom: 1.875rem;
+}
+
+.login-card input {
+    border: 2px solid var(--input-border-color);
+    font-size: 1.25rem;
+    padding: 15px;
+    border-radius: var(--main-radius);
+    width: 100%;
+}
+
+.login-card input::placeholder {
+    color: var(--input-text-color);
+}
+
+.login-card a {
+    align-self: flex-end;
+    text-decoration: none;
+    font-size: 1rem;
+    color: var(--color-black);
+}
+
+.login-card a:hover {
+    color: var(--color-purple);
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.login-card button {
+    align-self: center;
+    width: 100%;
+    max-width: 25rem;
+    height: auto;
+    padding: 15px;
+    border-radius: 100px;
+    border: 3px solid var(--color-purple);
+    background-color: transparent;
+    color: var(--color-black);
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition:
+        transform 180ms ease,
+        color 220ms ease;
+}
+
+.login-card button:hover {
+    background-color: var(--color-purple);
+    color: var(--color-white);
+    transform: translateY(-2px);
+}

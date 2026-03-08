@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { DashboardPage } from "../pages/DashboardPage";
-import { LoginPage } from "../pages/LoginPage";
+import { LoginPage } from "../pages/LoginPage/LoginPage";
 import { DetailPage } from "../pages/DetailPage/DetailPage";
 
 export function AppRouter() {

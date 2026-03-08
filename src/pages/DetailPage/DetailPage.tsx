@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { articles } from "../../lib/articles";
 import "./DetailPage.css";
 
@@ -8,18 +8,22 @@ export function DetailPage() {
     const article = articles.find((item) => item.id === id);
 
     if (!article) {
-        return <div>Artikel niet gevonden</div>;
+        return <p>Artikel niet gevonden</p>;
     }
 
     return (
-        <div>
-            <img src={article.image} alt={article.title} />
+        <main className="detail-page">
+            <Link className="detail-back-link" to="/">
+                Terug
+            </Link>
+            <section className="detail-card">
+                <h1>{article.title}</h1>
+                <img src={article.image} alt={article.title} />
 
-            <h1>{article.title}</h1>
+                <span>Geplaats op: {article.date}</span>
 
-            <span>{article.date}</span>
-
-            <p>{article.content}</p>
-        </div>
+                <p>{article.content}</p>
+            </section>
+        </main>
     );
 }
