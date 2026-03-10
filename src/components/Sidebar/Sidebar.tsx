@@ -53,7 +53,7 @@ export function Sidebar() {
                             className="sidebar-nav-icon"
                             style={iconStyle(articleIcon)}
                         />
-                        <span>Mijn artiekelen</span>
+                        <span>Mijn artikelen</span>
                     </a>
                 </li>
                 <li>
