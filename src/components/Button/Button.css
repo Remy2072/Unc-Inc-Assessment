@@ -1,0 +1,26 @@
+.button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px;
+    font-size: 20px;
+    border: none;
+    border-radius: var(--main-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.button--primary {
+    background-color: var(--color-purple);
+    color: var(--color-white);
+}
+
+.button--default {
+    background-color: var(--color-white);
+    color: var(--color-gray);
+}
+
+.button__icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}

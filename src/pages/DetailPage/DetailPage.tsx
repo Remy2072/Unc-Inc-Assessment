@@ -19,9 +19,7 @@ export function DetailPage() {
             <section className="detail-card">
                 <h1>{article.title}</h1>
                 <img src={article.image} alt={article.title} />
-
                 <span>Geplaats op: {article.date}</span>
-
                 <p>{article.content}</p>
             </section>
         </main>

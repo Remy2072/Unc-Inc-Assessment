@@ -1,24 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 
 :root {
-    /* kleuren */
     --color-bg: #f3f5f9;
     --color-white: #ffffff;
     --color-black: #000000;
     --color-purple: #5d5dff;
+    --color-purple-hover: #efeffd;
+    --color-gray: #909094;
+    --color-red: #ff2b2be6;
 
-    /* input */
     --input-border-color: #f0f0f0;
     --input-text-color: rgba(0, 0, 0, 0.2);
 
-    /* box shadow */
     --box-shadow:
         -1px -1px 5px 0px rgba(255, 255, 255, 0.75),
         inset 1px 1px 1px 0px rgba(255, 255, 255, 0.65),
         1px 1px 5px 0px rgba(0, 0, 0, 0.1),
         inset -1px -1px 1px 0px rgba(0, 0, 0, 0.05);
 
-    /* border radius */
     --main-radius: 15px;
 }
 
@@ -26,6 +25,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    list-style: none;
 }
 
 body {

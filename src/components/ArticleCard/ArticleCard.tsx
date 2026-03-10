@@ -8,13 +8,15 @@ interface Props {
 
 export function ArticleCard({ article }: Props) {
     return (
-        <Link to={`/articles/${article.id}`}>
-            <div>
+        <Link className="article-card-link" to={`/articles/${article.id}`}>
+            <article className="article-card">
                 <img src={article.image} alt={article.title} />
-                <h3>{article.title}</h3>
-                <p>{article.description}</p>
-                <small>{article.date}</small>
-            </div>
+                <div>
+                    <h3>{article.title}</h3>
+                    <span>Geplaats op: {article.date}</span>
+                    <p>{article.description}</p>
+                </div>
+            </article>
         </Link>
     );
 }
