@@ -24,7 +24,7 @@ export const handlers = [
             password: string;
         };
 
-        if (body.username === "r" && body.password === "r") {
+        if (body.username === "Remy" && body.password === "test1234") {
             isLoggedIn = true;
 
             return HttpResponse.json({

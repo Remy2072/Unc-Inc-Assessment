@@ -15,8 +15,8 @@
 }
 
 .controls-search-icon {
-    width: 24px;
-    height: 24px;
+    width: 1.5rem;
+    height: 1.5rem;
     flex-shrink: 0;
 }
 
@@ -24,7 +24,7 @@
     width: 100%;
     background-color: transparent;
     border: none;
-    font-size: 20px;
+    font-size: 1.25rem;
 }
 
 .controls-search input::placeholder {
@@ -59,6 +59,6 @@
 
     .controls-actions .button span {
         display: inline;
-        font-size: 18px;
+        font-size: 1.125rem;
     }
 }

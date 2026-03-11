@@ -1,13 +1,13 @@
 .layout {
     display: grid;
     margin-top: 3.75rem;
-    padding: 0 16px;
+    padding: 0 1rem;
     gap: 1.25rem;
 }
 
 @media (min-width: 768px) {
     .layout {
-        grid-template-columns: 280px 1fr;
+        grid-template-columns: 17.5rem 1fr;
         padding: 0 2rem;
         align-items: start;
     }

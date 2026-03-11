@@ -11,7 +11,7 @@
     background-color: var(--color-white);
     border-radius: var(--main-radius);
     padding: 1.25rem;
-    max-width: 250px;
+    max-width: 15.625rem;
     box-shadow: var(--box-shadow);
 }
 

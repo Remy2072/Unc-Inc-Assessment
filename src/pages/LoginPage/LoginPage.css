@@ -65,7 +65,7 @@
     max-width: 25rem;
     height: auto;
     padding: 15px;
-    border-radius: 100px;
+    border-radius: 6.25rem;
     border: 3px solid var(--color-purple);
     background-color: transparent;
     color: var(--color-black);

@@ -23,8 +23,8 @@
 }
 
 .sidebar-profile img {
-    width: 45px;
-    height: 45px;
+    width: 2.813rem;
+    height: 2.813rem;
     object-fit: cover;
 }
 
@@ -78,8 +78,8 @@
 }
 
 .sidebar-nav-icon {
-    width: 24px;
-    height: 24px;
+    width: 1.5rem;
+    height: 1.5rem;
     flex-shrink: 0;
     background-color: currentColor;
     -webkit-mask-image: var(--sidebar-icon);

@@ -13,7 +13,7 @@
     border-radius: var(--main-radius);
     padding: 1.25rem;
     width: 100%;
-    max-width: 500px;
+    max-width: 31.25rem;
     max-height: calc(100vh - 40px);
     overflow-y: auto;
     box-shadow: var(--box-shadow);
@@ -28,7 +28,7 @@
 }
 
 .article-editor-modal-field + .article-editor-modal-field {
-    margin-top: 25px;
+    margin-top: 1.563rem;
 }
 
 .article-editor-modal-label {
@@ -66,7 +66,7 @@
     border: 2px solid var(--input-border-color);
     border-radius: 0 0 var(--main-radius) var(--main-radius);
     font-size: 1.25rem;
-    min-height: 180px;
+    min-height: 11.25rem;
 }
 
 .article-editor-modal-editor .ql-editor {
@@ -85,7 +85,7 @@
     margin-top: 12px;
     border-radius: var(--main-radius);
     object-fit: cover;
-    max-height: 220px;
+    max-height: 13.75rem;
 }
 
 .article-editor-modal-remove-image {
