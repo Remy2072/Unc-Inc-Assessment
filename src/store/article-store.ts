@@ -11,10 +11,12 @@ import type { Article, ArticleInput } from "../types/article";
 type ArticleStore = {
     articles: Article[];
     selectedArticle: Article | null;
+    searchTerm: string;
     isLoading: boolean;
     errorMessage: string;
     hasLoaded: boolean;
     setSelectedArticle: (article: Article | null) => void;
+    setSearchTerm: (value: string) => void;
     loadArticles: () => Promise<void>;
     getArticleById: (id: string) => Promise<Article>;
     addArticle: (article: ArticleInput) => Promise<void>;
@@ -25,11 +27,15 @@ type ArticleStore = {
 export const useArticleStore = create<ArticleStore>((set, get) => ({
     articles: [],
     selectedArticle: null,
+    searchTerm: "",
     isLoading: false,
     errorMessage: "",
     hasLoaded: false,
     setSelectedArticle(article) {
         set({ selectedArticle: article });
+    },
+    setSearchTerm(value) {
+        set({ searchTerm: value });
     },
     async loadArticles() {
         if (get().isLoading) {

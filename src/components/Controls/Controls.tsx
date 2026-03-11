@@ -2,6 +2,7 @@ import addIcon from "../../assets/icons/add.svg";
 import filterIcon from "../../assets/icons/filter.svg";
 import searchIcon from "../../assets/icons/search.svg";
 import { useAuth } from "../../context/auth-context";
+import { useArticleStore } from "../../store/article-store";
 import { Button } from "../Button/Button";
 import "./Controls.css";
 
@@ -11,6 +12,8 @@ interface Props {
 
 export function Controls({ onCreateArticleClick }: Props) {
     const isLoggedIn = useAuth((state) => !!state.user);
+    const searchTerm = useArticleStore((state) => state.searchTerm);
+    const setSearchTerm = useArticleStore((state) => state.setSearchTerm);
 
     return (
         <section className="controls">
@@ -20,7 +23,12 @@ export function Controls({ onCreateArticleClick }: Props) {
                     src={searchIcon}
                     alt="Search icon"
                 />
-                <input type="search" placeholder="Zoek een artikel..." />
+                <input
+                    type="search"
+                    placeholder="Zoek een artikel..."
+                    value={searchTerm}
+                    onChange={(event) => setSearchTerm(event.target.value)}
+                />
             </div>
 
             <div

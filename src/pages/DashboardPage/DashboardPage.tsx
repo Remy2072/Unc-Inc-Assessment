@@ -13,6 +13,7 @@ export function DashboardPage() {
     >(null);
     const articles = useArticleStore((state) => state.articles);
     const selectedArticle = useArticleStore((state) => state.selectedArticle);
+    const searchTerm = useArticleStore((state) => state.searchTerm);
     const isLoading = useArticleStore((state) => state.isLoading);
     const errorMessage = useArticleStore((state) => state.errorMessage);
     const hasLoaded = useArticleStore((state) => state.hasLoaded);
@@ -64,6 +65,17 @@ export function DashboardPage() {
         await removeArticle(articleId);
     }
 
+    const normalizedSearchTerm = searchTerm.trim().toLowerCase();
+    const visibleArticles = articles.filter((article) => {
+        if (!normalizedSearchTerm) {
+            return true;
+        }
+
+        return [article.title, article.description, article.content].some(
+            (value) => value.toLowerCase().includes(normalizedSearchTerm),
+        );
+    });
+
     return (
         <main className="layout">
             <aside className="left">
@@ -77,17 +89,21 @@ export function DashboardPage() {
                 {errorMessage ? <p>{errorMessage}</p> : null}
 
                 {!isLoading && !errorMessage ? (
-                    <ul className="articles">
-                        {articles.map((article) => (
-                            <li key={article.id}>
-                                <ArticleCard
-                                    article={article}
-                                    onEditArticleClick={handleEditArticleClick}
-                                    onDeleteArticleClick={handleDeleteArticle}
-                                />
-                            </li>
-                        ))}
-                    </ul>
+                    visibleArticles.length > 0 ? (
+                        <ul className="articles">
+                            {visibleArticles.map((article) => (
+                                <li key={article.id}>
+                                    <ArticleCard
+                                        article={article}
+                                        onEditArticleClick={handleEditArticleClick}
+                                        onDeleteArticleClick={handleDeleteArticle}
+                                    />
+                                </li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p>Geen artikelen gevonden voor deze zoekopdracht.</p>
+                    )
                 ) : null}
             </section>
 
