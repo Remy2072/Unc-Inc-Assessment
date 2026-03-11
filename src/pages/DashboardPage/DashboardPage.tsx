@@ -4,6 +4,7 @@ import { ArticleCard } from "../../components/ArticleCard/ArticleCard";
 import { ArticleEditorModal } from "../../components/ArticleEditorModal/ArticleEditorModal";
 import { Controls } from "../../components/Controls/Controls";
 import { useArticleStore } from "../../store/article-store";
+import { useToastStore } from "../../store/toast-store";
 import type { Article, ArticleInput } from "../../types/article";
 import "./DashboardPage.css";
 
@@ -24,6 +25,7 @@ export function DashboardPage() {
     const addArticle = useArticleStore((state) => state.addArticle);
     const editArticle = useArticleStore((state) => state.editArticle);
     const removeArticle = useArticleStore((state) => state.removeArticle);
+    const showToast = useToastStore((state) => state.showToast);
 
     useEffect(() => {
         if (!hasLoaded) {
@@ -51,18 +53,30 @@ export function DashboardPage() {
     }
 
     async function handleArticleSubmit(article: ArticleInput) {
-        if (articleModalMode === "edit" && selectedArticle) {
-            await editArticle(selectedArticle.id, article);
-        } else {
-            await addArticle(article);
-        }
+        try {
+            if (articleModalMode === "edit" && selectedArticle) {
+                await editArticle(selectedArticle.id, article);
+                showToast("Artikel is bijgewerkt.", "success");
+            } else {
+                await addArticle(article);
+                showToast("Artikel is gepubliceerd.", "success");
+            }
 
-        setSelectedArticle(null);
-        setArticleModalMode(null);
+            setSelectedArticle(null);
+            setArticleModalMode(null);
+        } catch {
+            showToast("Actie mislukt. Probeer het opnieuw.", "error");
+        }
     }
 
     async function handleDeleteArticle(articleId: string) {
-        await removeArticle(articleId);
+        try {
+            await removeArticle(articleId);
+            showToast("Artikel is verwijderd.", "success");
+        } catch (error) {
+            showToast("Verwijderen mislukt. Probeer het opnieuw.", "error");
+            throw error;
+        }
     }
 
     const normalizedSearchTerm = searchTerm.trim().toLowerCase();
@@ -95,8 +109,12 @@ export function DashboardPage() {
                                 <li key={article.id}>
                                     <ArticleCard
                                         article={article}
-                                        onEditArticleClick={handleEditArticleClick}
-                                        onDeleteArticleClick={handleDeleteArticle}
+                                        onEditArticleClick={
+                                            handleEditArticleClick
+                                        }
+                                        onDeleteArticleClick={
+                                            handleDeleteArticle
+                                        }
                                     />
                                 </li>
                             ))}
