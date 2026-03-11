@@ -22,6 +22,12 @@
     }
 }
 
+@media (min-width: 1440px) {
+    .article-card {
+        min-width: 43.75rem;
+    }
+}
+
 .article-card:hover {
     transform: scale(1.01);
 }

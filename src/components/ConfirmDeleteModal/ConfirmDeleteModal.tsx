@@ -4,9 +4,16 @@ import "./ConfirmDeleteModal.css";
 interface Props {
     isOpen: boolean;
     onClose: (event?: MouseEvent<HTMLButtonElement | HTMLDivElement>) => void;
+    onConfirm: () => Promise<void>;
+    isDeleting: boolean;
 }
 
-export function ConfirmDeleteModal({ isOpen, onClose }: Props) {
+export function ConfirmDeleteModal({
+    isOpen,
+    onClose,
+    onConfirm,
+    isDeleting,
+}: Props) {
     if (!isOpen) {
         return null;
     }
@@ -27,13 +34,16 @@ export function ConfirmDeleteModal({ isOpen, onClose }: Props) {
                     <button
                         type="button"
                         className="confirm-delete-modal-button confirm-delete-modal-button--danger"
+                        onClick={onConfirm}
+                        disabled={isDeleting}
                     >
-                        Verwijdern
+                        {isDeleting ? "Bezig..." : "Verwijderen"}
                     </button>
                     <button
                         type="button"
                         className="confirm-delete-modal-button"
                         onClick={onClose}
+                        disabled={isDeleting}
                     >
                         Annuleer
                     </button>

@@ -9,12 +9,18 @@ import "./ArticleCard.css";
 
 interface Props {
     article: Article;
-    onEditArticleClick: () => void;
+    onEditArticleClick: (article: Article) => void;
+    onDeleteArticleClick: (articleId: string) => Promise<void>;
 }
 
-export function ArticleCard({ article, onEditArticleClick }: Props) {
-    const { isLoggedIn } = useAuth();
+export function ArticleCard({
+    article,
+    onEditArticleClick,
+    onDeleteArticleClick,
+}: Props) {
+    const isLoggedIn = useAuth((state) => !!state.user);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+    const [isDeleting, setIsDeleting] = useState(false);
 
     function handleDeleteButtonClick(event: MouseEvent<HTMLButtonElement>) {
         event.preventDefault();
@@ -25,7 +31,7 @@ export function ArticleCard({ article, onEditArticleClick }: Props) {
     function handleEditButtonClick(event: MouseEvent<HTMLButtonElement>) {
         event.preventDefault();
         event.stopPropagation();
-        onEditArticleClick();
+        onEditArticleClick(article);
     }
 
     function handleModalClose(
@@ -34,6 +40,17 @@ export function ArticleCard({ article, onEditArticleClick }: Props) {
         event?.preventDefault();
         event?.stopPropagation();
         setIsDeleteModalOpen(false);
+    }
+
+    async function handleConfirmDelete() {
+        setIsDeleting(true);
+
+        try {
+            await onDeleteArticleClick(article.id);
+            setIsDeleteModalOpen(false);
+        } finally {
+            setIsDeleting(false);
+        }
     }
 
     return (
@@ -71,6 +88,8 @@ export function ArticleCard({ article, onEditArticleClick }: Props) {
             <ConfirmDeleteModal
                 isOpen={isDeleteModalOpen}
                 onClose={handleModalClose}
+                onConfirm={handleConfirmDelete}
+                isDeleting={isDeleting}
             />
         </>
     );

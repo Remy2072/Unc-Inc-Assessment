@@ -21,7 +21,9 @@ function iconStyle(icon: string): SidebarIconStyle {
 }
 
 export function Sidebar() {
-    const { user, isLoggedIn, logout } = useAuth();
+    const user = useAuth((state) => state.user);
+    const logout = useAuth((state) => state.logout);
+    const isLoggedIn = !!user;
     const navigate = useNavigate();
 
     async function handleAuthClick() {

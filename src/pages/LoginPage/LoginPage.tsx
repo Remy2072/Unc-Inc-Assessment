@@ -7,7 +7,7 @@ import "./LoginPage.css";
 
 export function LoginPage() {
     const navigate = useNavigate();
-    const { login } = useAuth();
+    const login = useAuth((state) => state.login);
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");

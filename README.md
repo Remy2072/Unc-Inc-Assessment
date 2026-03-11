@@ -65,9 +65,15 @@ Volg deze stappen om het project op je eigen machine op te starten:
     ```
 
 4. **Open de applicatie**
+
     ```bash
     http://localhost:5173
     ```
+
+5. **Inloggegevens**
+
+Gebruikersnaam: Remy
+Wachtwoord: test1234
 
 ## Functionaliteit
 

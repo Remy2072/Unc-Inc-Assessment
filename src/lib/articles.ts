@@ -1,6 +1,6 @@
 import type { Article } from "../types/article";
 
-export const articles: Article[] = [
+export const initialArticles: Article[] = [
     {
         id: "1",
         title: "De Johan Cruijff Arena krijgt een renovatie",

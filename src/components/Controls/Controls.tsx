@@ -10,7 +10,7 @@ interface Props {
 }
 
 export function Controls({ onCreateArticleClick }: Props) {
-    const { isLoggedIn } = useAuth();
+    const isLoggedIn = useAuth((state) => !!state.user);
 
     return (
         <section className="controls">

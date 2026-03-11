@@ -6,3 +6,10 @@ export interface Article {
     image: string;
     date: string;
 }
+
+export interface ArticleInput {
+    title: string;
+    description: string;
+    content: string;
+    image: string;
+}

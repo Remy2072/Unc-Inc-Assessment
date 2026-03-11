@@ -19,6 +19,10 @@
     box-shadow: var(--box-shadow);
 }
 
+.article-editor-modal-title {
+    margin-bottom: 1rem;
+}
+
 .article-editor-modal-field {
     display: block;
 }
@@ -94,6 +98,13 @@
     padding: 0;
 }
 
+.article-editor-modal-error {
+    display: block;
+    margin-top: 0.35rem;
+    color: var(--color-red);
+    font-size: 0.95rem;
+}
+
 .article-editor-modal-actions {
     display: flex;
     margin-top: 1.25rem;
@@ -107,6 +118,11 @@
     border: none;
     background: none;
     cursor: pointer;
+}
+
+.article-editor-modal-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
 }
 
 .article-editor-modal-button--primary {

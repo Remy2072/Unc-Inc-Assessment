@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { create } from "zustand";
 
 export type User = {
     id: number;
@@ -6,22 +6,60 @@ export type User = {
     avatar: string;
 };
 
-export type AuthContextType = {
+type AuthState = {
     user: User | null;
-    isLoggedIn: boolean;
     isLoading: boolean;
+    initialize: () => Promise<void>;
     login: (username: string, password: string) => Promise<boolean>;
     logout: () => Promise<void>;
 };
 
-export const AuthContext = createContext<AuthContextType | null>(null);
+export const useAuth = create<AuthState>((set, get) => ({
+    user: null,
+    isLoading: true,
+    async initialize() {
+        if (!get().isLoading) {
+            return;
+        }
 
-export function useAuth() {
-    const context = useContext(AuthContext);
+        try {
+            const response = await fetch("/api/me");
+            const data = (await response.json()) as { user: User | null };
+            set({ user: data.user, isLoading: false });
+        } catch {
+            set({ user: null, isLoading: false });
+        }
+    },
+    async login(username: string, password: string) {
+        try {
+            const response = await fetch("/api/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ username, password }),
+            });
 
-    if (!context) {
-        throw new Error("useAuth must be used within AuthProvider");
-    }
+            if (!response.ok) {
+                set({ user: null });
+                return false;
+            }
 
-    return context;
-}
+            const data = (await response.json()) as { user: User };
+            set({ user: data.user });
+            return true;
+        } catch {
+            set({ user: null });
+            return false;
+        }
+    },
+    async logout() {
+        try {
+            await fetch("/api/logout", {
+                method: "POST",
+            });
+        } finally {
+            set({ user: null });
+        }
+    },
+}));
