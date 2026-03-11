@@ -7,6 +7,7 @@
     border: none;
     border-radius: var(--main-radius);
     box-shadow: var(--box-shadow);
+    cursor: pointer;
 }
 
 .button--primary {

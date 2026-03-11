@@ -1,0 +1,39 @@
+.confirm-delete-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.45);
+    display: grid;
+    place-items: center;
+    z-index: 1000;
+}
+
+.confirm-delete-modal {
+    background-color: var(--color-white);
+    border-radius: var(--main-radius);
+    padding: 1.25rem;
+    max-width: 250px;
+    box-shadow: var(--box-shadow);
+}
+
+.confirm-delete-modal-text {
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+}
+
+.confirm-delete-modal-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.confirm-delete-modal-button {
+    font-size: 1.25rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.confirm-delete-modal-button--danger {
+    color: var(--color-red);
+}

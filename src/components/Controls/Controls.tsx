@@ -5,7 +5,11 @@ import { useAuth } from "../../context/auth-context";
 import { Button } from "../Button/Button";
 import "./Controls.css";
 
-export function Controls() {
+interface Props {
+    onCreateArticleClick: () => void;
+}
+
+export function Controls({ onCreateArticleClick }: Props) {
     const { isLoggedIn } = useAuth();
 
     return (
@@ -27,7 +31,11 @@ export function Controls() {
                 }`}
             >
                 {isLoggedIn && (
-                    <Button icon={addIcon} variant="primary">
+                    <Button
+                        icon={addIcon}
+                        variant="primary"
+                        onClick={onCreateArticleClick}
+                    >
                         Nieuw artikel
                     </Button>
                 )}

@@ -1,0 +1,114 @@
+.article-editor-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.45);
+    display: grid;
+    place-items: center;
+    z-index: 1000;
+    padding: 1.25rem;
+}
+
+.article-editor-modal {
+    background-color: var(--color-white);
+    border-radius: var(--main-radius);
+    padding: 1.25rem;
+    width: 100%;
+    max-width: 500px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    box-shadow: var(--box-shadow);
+}
+
+.article-editor-modal-field {
+    display: block;
+}
+
+.article-editor-modal-field + .article-editor-modal-field {
+    margin-top: 25px;
+}
+
+.article-editor-modal-label {
+    font-size: 1.25rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.article-editor-modal-input {
+    border: 2px solid var(--input-border-color);
+    font-size: 1.25rem;
+    padding: 15px;
+    border-radius: var(--main-radius);
+    width: 100%;
+    margin-top: 5px;
+}
+
+.article-editor-modal-input[type="file"] {
+    margin-top: 5px;
+}
+
+.article-editor-modal-editor {
+    margin-top: 5px;
+}
+
+.article-editor-modal-editor .ql-toolbar.ql-snow {
+    border: 2px solid var(--input-border-color);
+    border-bottom: none;
+    border-radius: var(--main-radius) var(--main-radius) 0 0;
+    padding: 10px 12px;
+}
+
+.article-editor-modal-editor .ql-container.ql-snow {
+    border: 2px solid var(--input-border-color);
+    border-radius: 0 0 var(--main-radius) var(--main-radius);
+    font-size: 1.25rem;
+    min-height: 180px;
+}
+
+.article-editor-modal-editor .ql-editor {
+    padding: 15px;
+}
+
+.article-editor-modal-editor .ql-editor.ql-blank::before {
+    left: 15px;
+    right: 15px;
+    color: var(--color-gray);
+    font-style: normal;
+}
+
+.article-editor-modal-preview {
+    width: 100%;
+    margin-top: 12px;
+    border-radius: var(--main-radius);
+    object-fit: cover;
+    max-height: 220px;
+}
+
+.article-editor-modal-remove-image {
+    margin-top: 12px;
+    border: none;
+    background: none;
+    color: var(--color-red);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0;
+}
+
+.article-editor-modal-actions {
+    display: flex;
+    margin-top: 1.25rem;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.article-editor-modal-button {
+    font-size: 1.25rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.article-editor-modal-button--primary {
+    color: var(--color-purple);
+}
