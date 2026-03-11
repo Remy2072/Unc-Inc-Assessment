@@ -47,19 +47,18 @@
 }
 
 @media (min-width: 768px) {
-    .controls-actions {
+    .controls-actions--three {
         justify-content: space-between;
         gap: 0;
+    }
+
+    .controls-actions--two {
+        justify-content: flex-start;
+        gap: 15px;
     }
 
     .controls-actions .button span {
         display: inline;
         font-size: 18px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .controls-actions .button span {
-        font-size: 20px;
     }
 }

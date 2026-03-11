@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import profileImage from "../../assets/profile.png";
 import accountIcon from "../../assets/icons/account.svg";
 import articleIcon from "../../assets/icons/article.svg";
@@ -6,6 +7,7 @@ import homeIcon from "../../assets/icons/home.svg";
 import starIcon from "../../assets/icons/star.svg";
 import logoutIcon from "../../assets/icons/logout.svg";
 import settingsIcon from "../../assets/icons/settings.svg";
+import { useAuth } from "../../context/auth-context";
 import "./Sidebar.css";
 
 type SidebarIconStyle = CSSProperties & {
@@ -19,22 +21,37 @@ function iconStyle(icon: string): SidebarIconStyle {
 }
 
 export function Sidebar() {
+    const { user, isLoggedIn, logout } = useAuth();
+    const navigate = useNavigate();
+
+    async function handleAuthClick() {
+        if (isLoggedIn) {
+            await logout();
+            navigate("/");
+        } else {
+            navigate("/login");
+        }
+    }
+
     return (
         <div className="sidebar">
-            <div className="sidebar-profile">
-                <img src={profileImage} alt="Profiel" />
-                <h2>Remy Duivesteijn</h2>
-            </div>
+            {isLoggedIn ? (
+                <div className="sidebar-profile">
+                    <img src={profileImage} alt="Profiel" />
+                    <h2>{user?.name}</h2>
+                </div>
+            ) : null}
+
             <ul className="sidebar-nav-list">
                 <li>
-                    <a href="/">
+                    <Link to="/">
                         <span
                             aria-hidden="true"
                             className="sidebar-nav-icon"
                             style={iconStyle(homeIcon)}
                         />
                         <span>Overzicht</span>
-                    </a>
+                    </Link>
                 </li>
                 <li>
                     <a href="#">
@@ -67,6 +84,7 @@ export function Sidebar() {
                     </a>
                 </li>
             </ul>
+
             <ul className="sidebar-nav-list-2">
                 <li>
                     <a href="#">
@@ -79,14 +97,20 @@ export function Sidebar() {
                     </a>
                 </li>
                 <li>
-                    <a href="/login">
+                    <button
+                        type="button"
+                        onClick={handleAuthClick}
+                        className="sidebar-auth-button"
+                    >
                         <span
                             aria-hidden="true"
-                            className="sidebar-nav-icon log-out"
+                            className={`sidebar-nav-icon ${isLoggedIn ? "log-out" : ""}`}
                             style={iconStyle(logoutIcon)}
                         />
-                        <span className="log-out">Afmelden</span>
-                    </a>
+                        <span className={isLoggedIn ? "log-out" : ""}>
+                            {isLoggedIn ? "Afmelden" : "Inloggen"}
+                        </span>
+                    </button>
                 </li>
             </ul>
         </div>
